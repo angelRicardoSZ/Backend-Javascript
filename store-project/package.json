@@ -1,7 +1,7 @@
 {
   "name": "store-project",
   "version": "1.0.0",
-  "description": "ecommerce project\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D-\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[C\u001b[Dcommerce project",
+  "description": "ecommerce project",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -15,10 +15,15 @@
   "author": "Angel Ricardo",
   "license": "MIT",
   "devDependencies": {
+    "@faker-js/faker": "^7.2.0",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "faker": "^5.5.3"
   }
 }
