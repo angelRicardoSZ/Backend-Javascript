@@ -6,7 +6,9 @@ const router = express.Router();
 
 
 router.get("/", function(req,res) {
-    controller.getMessage()
+    const filterMessages = req.query.user || null;
+
+    controller.getMessage(filterMessages)
     .then((messageList)=>{
         response.success(req,res,messageList,200)
     })
@@ -44,5 +46,7 @@ router.patch("/:id", function (req,res) {
     
     
 })
+
+
 
 module.exports = router;
