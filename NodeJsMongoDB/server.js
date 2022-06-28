@@ -1,9 +1,9 @@
 const express = require("express");
-
+const db = require("./db")
 // const router = require("./components/message/network");
 const router = require("./network/routes");
-
-
+require("dotenv").config({ path: ".env" });
+db(process.env.DB_CONNECT)
 
 var app = express()
 
