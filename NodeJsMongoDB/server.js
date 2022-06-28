@@ -1,6 +1,9 @@
 const express = require("express");
-const response = require("./network/response")
-const router = express.Router();
+
+// const router = require("./components/message/network");
+const router = require("./network/routes");
+
+
 
 var app = express()
 
@@ -8,21 +11,10 @@ var app = express()
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(router);
+// app.use(router)
 
+router(app)
 
-router.get("/message", function(req,res) {
-    response.success(req,res,"Lista de mensajes")
-})
-
-router.post("/message", function(req,res) {
-    if(req.query.error == "ok"){
-        response.error(req,res,"Error inesperado",400, "Es solo una simulacion de los errores")
-    } else {
-        response.success(req,res,"Creado correctamente",201)
-    }
-    
-})
 
 
 app.use("/app", express.static("public"))
