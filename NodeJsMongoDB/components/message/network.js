@@ -5,7 +5,8 @@ const router = express.Router();
 
 
 router.get("/", function(req,res) {
-    const filterMessages = req.query.user || null;
+    // const filterMessages = req.query.user || null;
+    const filterMessages = req.query.chat || null;
 
     controller.getMessage(filterMessages)
     .then((messageList)=>{
@@ -17,7 +18,7 @@ router.get("/", function(req,res) {
 })
 
 router.post("/", function(req,res) {
-    controller.addMessage(req.body.user, req.body.message)
+    controller.addMessage(req.body.chat,req.body.user, req.body.message)
         .then((fullMessage)=> {
             response.success(req,res,fullMessage,201)
         })
@@ -49,7 +50,7 @@ router.patch("/:id", function (req,res) {
 router.delete("/:id", function(req,res){
     controller.deleteMessage(req.params.id)
     .then(()=>{
-        response.success(req,res,`Usuario ${req.params.id} eliminado`, 200);
+        response.success(req,res,`Mensaje ${req.params.id} eliminado`, 200);
     })
     .catch(e=>{
         response.error(req,res,"Error interno", 500,e)
@@ -57,3 +58,5 @@ router.delete("/:id", function(req,res){
 })
 
 module.exports = router;
+
+

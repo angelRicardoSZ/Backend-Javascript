@@ -8,24 +8,44 @@ function addMessage(message){
     // list.push(message)
 }
 
-async function getMessage(filterUser){
-    return new Promise((resolve,reject)=>{
-        let filter ={}
-        if (filterUser !==null){
-            filter = {user:filterUser}
+// async function getMessage(filterUser){
+//     return new Promise((resolve,reject)=>{
+//         let filter ={}
+//         if (filterUser !==null){
+//             filter = {user:filterUser}
+//         }
+//         Model.find(filter)
+//             .populate("user")
+//             .exec((err,populated)=> {
+//                 if(err) {
+//                     reject(err)
+//                     return false
+//                 }
+//                 resolve(populated)
+//             })
+//     })
+    
+// }   
+
+async function getMessage(filterChat) {
+    return new Promise((resolve, reject) => {
+        let filter = {};
+        if (filterChat !== null) {
+            filter = { chat: filterChat };
         }
         Model.find(filter)
-            .populate("user")
-            .exec((err,populated)=> {
-                if(err) {
-                    reject(err)
-                    return false
+            .populate('user')
+            .exec((error, populated) => {
+                if (error) {
+                    reject(error);
+                    return false;
                 }
-                resolve(populated)
-            })
+
+                resolve(populated);
+            });
     })
-    
-}   
+}
+
 
 
 async function updateText(id,message) {
