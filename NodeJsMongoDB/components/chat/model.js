@@ -7,13 +7,7 @@ const mySchema = new Schema({
         type: Schema.ObjectId,
         ref: "User",
     },
-    message:{
-        type: String,
-        required: true
-    },
-    date: Date
 });
 
 const model = mongoose.model("Message", mySchema);
 module.exports = model;
-

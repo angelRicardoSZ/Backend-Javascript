@@ -1,4 +1,3 @@
-const { text } = require("body-parser");
 const express = require("express");
 const response = require("../../network/response")
 const controller = require("./controller");
