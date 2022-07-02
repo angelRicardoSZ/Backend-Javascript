@@ -4,8 +4,22 @@ const response = require("../../../network/response")
 const controller = require("./index")
 
 const router = express.Router();
+
+
+
+
 router.use(express.json()) 
-router.get("/", function(req,res){
+
+// Routes
+router.get("/", list)
+
+router.get("/:id", detail)
+
+router.post("/", upsert)
+
+
+
+function list(req,res){
     // res.send("all works")
     controller.list()
         .then((lista)=>{
@@ -15,9 +29,9 @@ router.get("/", function(req,res){
             response.error(req,res,error.message,500)
         })
     
-})
+}
 
-router.get("/:id", function(req,res){
+function detail(req,res){
     // res.send("all works")
     controller.get(req.params.id)
     .then((user) => {
@@ -27,9 +41,9 @@ router.get("/:id", function(req,res){
         response.error(req,res,error.message,500)
     })
 
-})
+}
 
-router.post("/", function(req,res){
+function upsert(req,res){
     // console.log(req.body)
     // res.send("all works")
     controller.upsert(req.body)
@@ -40,8 +54,7 @@ router.post("/", function(req,res){
         response.error(req,res,error.message,500)
     })
 
-})
-
+}
 
 
 
