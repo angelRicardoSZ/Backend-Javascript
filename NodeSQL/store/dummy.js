@@ -21,7 +21,7 @@ async function upsert(tabla,data) {
         db[tabla] = [];
     }
     db[tabla].push(data)
-    return db[tabla]
+    return db
 }
 
 async function remove(tabla,id) {
