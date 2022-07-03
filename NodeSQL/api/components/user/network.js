@@ -1,5 +1,5 @@
 const express = require("express");
-
+const secure = require("./secure")
 const response = require("../../../network/response")
 const controller = require("./index")
 
@@ -15,7 +15,9 @@ router.get("/", list)
 
 router.get("/:id", detail)
 
-router.post("/", upsert)
+router.post("/", upsert);
+
+router.put("/", secure("update"), upsert);
 
 
 
