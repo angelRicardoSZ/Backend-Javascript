@@ -15,6 +15,8 @@ router.get("/", list)
 
 router.post("/follow/:id",secure("follow"), follow)
 
+router.get('/:id/following', following);
+
 router.get("/:id", detail)
 
 router.post("/", upsert);
@@ -72,6 +74,18 @@ function follow(req,res) {
         })
 
 }
+
+
+function following(req, res) {
+	return controller.following(req.params.id)
+		.then( (data) => {
+			return response.success(req, res, data, 200);
+		})
+		.catch((error) => {
+            response.error(req,res,error.message,500)
+        })
+}
+
 
 
 module.exports = router
