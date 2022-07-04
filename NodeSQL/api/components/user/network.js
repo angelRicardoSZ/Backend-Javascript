@@ -13,11 +13,14 @@ router.use(express.json())
 // Routes
 router.get("/", list)
 
+router.post("/follow/:id",secure("follow"), follow)
+
 router.get("/:id", detail)
 
 router.post("/", upsert);
 
 router.put("/", secure("update"), upsert);
+
 
 
 
@@ -59,7 +62,16 @@ function upsert(req,res){
 }
 
 
+function follow(req,res) {
+    controller.follow(req.user.id,req.params.id)
+        .then((user) => {
+            response.success(req,res,user,200)
+        })
+        .catch((error) => {
+            response.error(req,res,error.message,500)
+        })
 
+}
 
 
 module.exports = router

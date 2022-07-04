@@ -72,7 +72,11 @@ function update(table, data) {
 }
 
 async function upsert(table, data) {
-    const row = await get(table, data.id);
+    let row = []
+    if(data.id){
+        row = await get(table, data.id)
+    }
+    
     if (row.length === 0) {
         return insert(table, data);
     } else {
