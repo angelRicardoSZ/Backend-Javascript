@@ -8,13 +8,13 @@ function createRemoteDB(host, port) {
         return req('GET', table);
     }
 
-	// function get(table, id) {
-	// 	return req('GET', table, id);
-	// }
+	function get(table, id) {
+		return req('GET', table, id);
+	}
 
-	// function insert(table, data) {
-	// 	return req('POST', table, data);
-	// }
+	function insert(table, data) {
+		return req('POST', table, data);
+	}
 
 	// function update(table, data) {
 	// 	return req('PUT', table, data);
@@ -64,6 +64,8 @@ function createRemoteDB(host, port) {
 
     return {
         list,
+        get,
+        insert
     }
 }
 
