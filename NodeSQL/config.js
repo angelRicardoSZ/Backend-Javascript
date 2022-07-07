@@ -10,10 +10,10 @@ module.exports = {
         secret:process.env.JWT_SECRET || "secret"
     },
     mysql: {
-        host: process.env.MYSQL_HOST || '',
-        user: process.env.MYSQL_USER || '',
-        password: process.env.MYSQL_PASS || '',
-        database: process.env.MYSQL_DB || '',
+        host: process.env.MYSQL_HOST || 'sql10.freemysqlhosting.net',
+        user: process.env.MYSQL_USER || 'sql10503940',
+        password: process.env.MYSQL_PASS || 'KmdZ6VqAef',
+        database: process.env.MYSQL_DB || 'sql10503940',
     },
     mysqlService: {
         host: process.env.MYSQL_SRV_HOST || 'localhost',
