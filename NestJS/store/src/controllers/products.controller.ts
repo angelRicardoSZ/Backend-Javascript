@@ -9,13 +9,15 @@ import {
   Delete,
   HttpStatus,
   HttpCode,
+  // ParseIntPipe,
 } from '@nestjs/common';
-import { ParseIntPipe } from '@nestjs/common';
 
 import { ProductsService } from '../services/products.service';
+import { ParseIntPipe } from '../common/parse-int.pipe';
+import { CreateProductDto, UpdateProductDto } from '../dtos/products.dtos';
 @Controller('products')
 export class ProductsController {
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService) { }
   @Get()
   getProductquery(
     @Query('limit') limit: number,
@@ -38,7 +40,7 @@ export class ProductsController {
   }
 
   @Post()
-  create(@Body() payload: any) {
+  create(@Body() payload: CreateProductDto) {
     // return {
     //   message: 'Acción de crear',
     //   payload,
@@ -46,7 +48,7 @@ export class ProductsController {
     return this.productsService.create(payload);
   }
   @Put(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() payload: any) {
+  update(@Param('id', ParseIntPipe) id: number, @Body() payload: UpdateProductDto) {
     // return {
     //   message: 'Acción de actualizar',
     //   id,
