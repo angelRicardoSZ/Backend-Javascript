@@ -18,14 +18,11 @@ export class ProductsService {
     return this.products;
   }
   findOne(id: number) {
-    const indexProduct = this.products.findIndex((item) => item.id === id);
-    if (indexProduct === -1) {
+    const product = this.products.find((item) => item.id === id);
+    if (!product) {
       throw new NotFoundException('Product not found');
     }
-    return {
-      message: 'Detail product',
-      product_updated: this.products[indexProduct],
-    };
+    return product;
   }
   create(payload: CreateProductDto) {
     this.counterId++;
@@ -37,12 +34,14 @@ export class ProductsService {
     return newProduct;
   }
   update(id: number, payload: UpdateProductDto) {
+    const product = this.findOne(id);
     const indexProduct = this.products.findIndex((item) => item.id === id);
     if (indexProduct === -1) {
       throw new NotFoundException('Product not found');
     }
     this.products[indexProduct] = {
       id: id,
+      ...product,
       ...payload,
     };
     return {
